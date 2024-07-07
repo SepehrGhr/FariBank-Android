@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Fari Bank- Android</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="signup_prompt">Don\'t have an account yet? Sign up</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="security_number">Security Number</string>
+    <string name="last_name">Last Name</string>
+    <string name="first_name">First Name</string>
+    <string name="title_activity_dashboard">DashboardActivity</string>
 </resources>

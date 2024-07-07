@@ -1,7 +1,28 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.FariBankAndroid" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <!-- Primary branding color for the app -->
+        <item name="colorPrimary">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariantDark</item>
+        <item name="colorOnPrimary">@color/colorOnPrimaryDark</item>
+
+        <!-- Secondary branding color for the app -->
+        <item name="colorSecondary">@color/colorSecondaryDark</item>
+        <item name="colorSecondaryVariant">@color/colorSecondaryVariantDark</item>
+        <item name="colorOnSecondary">@color/colorOnSecondaryDark</item>
+
+        <!-- Background color for the app -->
+        <item name="android:colorBackground">@color/colorBackgroundDark</item>
+        <item name="android:colorForeground">@color/colorForegroundDark</item>
+
+        <!-- Customize typography -->
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textColorPrimary">@color/colorTextPrimaryDark</item>
+        <item name="android:textColorSecondary">@color/colorTextSecondaryDark</item>
+
+        <!-- Button styles -->
+        <item name="buttonStyle">@style/Widget.FariBankAndroid.Button</item>
     </style>
+
+    <style name="Theme.FariBankAndroid" parent="Base.Theme.FariBankAndroid" />
 </resources>
