@@ -106,7 +106,7 @@ public class UserData {
         }
     }
 
-    private Entry<User, Boolean> findUserByCardNumber(String cardNumber) {
+    Entry<User, Boolean> findUserByCardNumber(String cardNumber) {
         for (User user : allUsers) {
             if (user.isAuthenticated() && user.getAccount().getCreditCard().getCardNumber().equals(cardNumber)) {
                 return new SimpleEntry<>(user, true);
@@ -268,18 +268,18 @@ public class UserData {
             //System.out.println(Color.RED + "Selected user's account is blocked and you cant transfer money to them" + Color.RESET);
             return;
         }
-        if (selected.getUser().haveInContacts(selected) && selected.getUser().isContactsActivated()) {
-            amount = transferMoney(selected.getUser(), true, true);
-            if (amount != -1) {
-                TransferReceipt newReceipt = new TransferReceipt(amount, Main.getUsers().getCurrentUser(), selected.getUser(), Method.CONTACT);
-                Main.getUsers().getCurrentUser().addReceipt(newReceipt);
-                TransferReceipt destReceipt = new TransferReceipt(amount, Main.getUsers().getCurrentUser(), selected.getUser(), Method.ACCOUNT);
-                selected.getUser().addReceipt(destReceipt);
-                //System.out.println(newReceipt);
-            }
-        } else {
-            //System.out.println(Color.RED + "Selected contact does not have you in their contacts or they have deactivated getting money from contacts" + Color.RESET);
-        }
+//        if (selected.getUser().haveInContacts(selected) && selected.getUser().isContactsActivated()) {
+//            amount = transferMoney(selected.getUser(), true, true);
+//            if (amount != -1) {
+//                TransferReceipt newReceipt = new TransferReceipt(amount, Main.getUsers().getCurrentUser(), selected.getUser(), Method.CONTACT);
+//                Main.getUsers().getCurrentUser().addReceipt(newReceipt);
+//                TransferReceipt destReceipt = new TransferReceipt(amount, Main.getUsers().getCurrentUser(), selected.getUser(), Method.ACCOUNT);
+//                selected.getUser().addReceipt(destReceipt);
+//                //System.out.println(newReceipt);
+//            }
+//        } else {
+//            //System.out.println(Color.RED + "Selected contact does not have you in their contacts or they have deactivated getting money from contacts" + Color.RESET);
+//        }
     }
 
     public void transferByRecentUser() {

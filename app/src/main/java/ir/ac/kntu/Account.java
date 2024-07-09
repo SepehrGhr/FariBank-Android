@@ -1,5 +1,6 @@
 package ir.ac.kntu;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -7,7 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class Account {
+public class Account implements Serializable {
     private String accountID;
     private CreditCard creditCard;
     private long balance;
@@ -63,16 +64,6 @@ public class Account {
         Pattern idPattern = Pattern.compile(idRegex);
         Matcher idMatcher = idPattern.matcher(idOrNumber);
         return idMatcher.matches()  && (idOrNumber.length() == 12 || idOrNumber.length() == 16);
-    }
-
-    public void printChargeAccount() {
-        System.out.println(Color.WHITE + "Please enter the amount your trying to charge your account (Maximum 12 digits)" + Color.RESET);
-        String input = InputManager.getInput();
-        while (!InputManager.chargeAmountValidity(input)) {
-            System.out.println(Color.RED + "Please enter a valid number (Maximum 12 digits , Minimum 1)" + Color.RESET);
-            input = InputManager.getInput();
-        }
-        chargeAccount(Long.parseLong(input));
     }
 
     public void chargeAccount(long amount) {

@@ -1,6 +1,8 @@
 package ir.ac.kntu;
 
-public class InterestFund extends Fund{
+import java.io.Serializable;
+
+public class InterestFund extends Fund implements Serializable {
     private final int mustReceiveCount;
     private boolean canWithdraw;
     private int receivedCount;
@@ -43,17 +45,17 @@ public class InterestFund extends Fund{
     }
 
     @Override
-    public void withdraw(long amount) {
+    public boolean withdraw(long amount) {
         if(canWithdraw){
             if (getBalance() >= amount) {
                 setBalance(getBalance() - amount);
                 getOwner().getAccount().setBalance(getOwner().getAccount().getBalance() + amount);
-                System.out.println(Color.GREEN + "Selected amount was successfully withdrew from your interest fund" + Color.RESET);
+                return true;
             } else {
-                System.out.println(Color.RED + "Selected Fund's balance is not enough" + Color.RESET);
+                return false;
             }
         } else{
-            System.out.println(Color.RED + "You cant currently withdraw from this interest fund (sleep phase hasn't finished)" + Color.RESET);
+            return false;
         }
 
     }
@@ -70,6 +72,11 @@ public class InterestFund extends Fund{
         } else {
             Menu.printMenu(OptionEnums.SelectedFundMenu.values(), this::handleManagementInput);
         }
+    }
+
+    @Override
+    public String getName() {
+        return "Interest Fund";
     }
 
     @Override

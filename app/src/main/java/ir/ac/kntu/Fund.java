@@ -1,13 +1,28 @@
 package ir.ac.kntu;
 
-public abstract class Fund {
+import java.io.Serializable;
+import java.util.concurrent.atomic.AtomicLong;
+
+public abstract class Fund implements Serializable {
+    private static final long serialVersionUID = 1L; // Serializable ID
+    private static final AtomicLong ID_COUNTER = new AtomicLong(1); // Atomic counter for unique IDs
+
+    private final long id; // Unique identifier for each instance
     private long balance;
     private User owner;
 
+    // Constructor to initialize owner and generate a unique ID
     public Fund(User owner) {
         this.owner = owner;
+        this.id = ID_COUNTER.getAndIncrement(); // Generate a unique ID
     }
 
+    // Getter for ID
+    public long getId() {
+        return id;
+    }
+
+    // Getter and setter for balance
     public long getBalance() {
         return balance;
     }
@@ -16,13 +31,15 @@ public abstract class Fund {
         this.balance = Math.max(0, balance);
     }
 
+    // Getter for owner
     public User getOwner() {
         return owner;
     }
 
+    // Abstract methods to be implemented by subclasses
     public abstract void deposit(long amount);
 
-    public abstract void withdraw(long amount);
+    public abstract boolean withdraw(long amount);
 
     public abstract String getType();
 
@@ -58,6 +75,8 @@ public abstract class Fund {
         }
         return amount;
     }
+
+    public abstract String getName();
 
     public abstract void showBalance();
 }

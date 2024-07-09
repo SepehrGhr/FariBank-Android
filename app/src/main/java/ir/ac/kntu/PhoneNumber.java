@@ -1,6 +1,8 @@
 package ir.ac.kntu;
 
-public class PhoneNumber {
+import java.io.Serializable;
+
+public class PhoneNumber implements Serializable {
 
     private long balance;
     private String number;

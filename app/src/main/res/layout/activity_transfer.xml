@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/et_account_id_card_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorOnPrimary"
+        android:hint="Enter Account ID/Card Number" />
+
+    <Button
+        android:id="@+id/btn_select_recent_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select from Recent Users" />
+
+    <Button
+        android:id="@+id/btn_select_contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select from Contacts" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_recent_users_contacts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <EditText
+        android:id="@+id/et_transfer_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Amount" />
+
+    <Button
+        android:id="@+id/btn_transfer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Transfer" />
+
+</LinearLayout>

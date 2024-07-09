@@ -2,6 +2,7 @@ package ir.ac.kntu;
 
 import android.os.Build;
 
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class User {
+public class User implements Serializable {
     private String name;
     private String lastName;
     private PhoneNumber phoneNumber;
@@ -56,6 +57,10 @@ public class User {
         return authenticated;
     }
 
+    public List<Fund> getFunds() {
+        return funds;
+    }
+
     public boolean isBlocked() {
         return blocked;
     }
@@ -70,6 +75,10 @@ public class User {
 
     public Account getAccount() {
         return account;
+    }
+
+    public List<Contact> getContacts(){
+        return contacts;
     }
 
     public List<Receipt> getReceipts(){
@@ -124,6 +133,10 @@ public class User {
         this.lastName = lastName;
     }
 
+    public List<User> getRecentUsers() {
+        return recentUsers;
+    }
+
     public void setPhoneNumber(PhoneNumber phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
@@ -157,26 +170,6 @@ public class User {
         return false;
     }
 
-    public void showAndEditContact() {
-        if (contacts.size() == 0) {
-            return;
-        }
-        Contact selectedContact = selectContactFromList();
-        if (selectedContact != null) {
-            System.out.println(selectedContact);
-            editContactMenu(selectedContact);
-        }
-    }
-
-    private void editContactMenu(Contact selectedContact) {
-        System.out.println(Color.WHITE + "Enter 1 if you want to edit this contact and 2 to return" + Color.RESET);
-        String selection = InputManager.getSelection(2);
-        if ("2".equals(selection)) {
-            return;
-        }
-        selectedContact.edit();
-    }
-
     public void addToRecentUsers(User destination) {
         if (!recentUsers.contains(destination)) {
             recentUsers.add(destination);
@@ -191,9 +184,9 @@ public class User {
         return Display.pageShow(contacts, contact -> System.out.println(Color.BLUE + contact.getName() + " " + contact.getLastName()));
     }
 
-    public boolean haveInContacts(Contact selected) {
-        for (Contact contact : selected.getUser().contacts) {
-            if (contact.getUser().getPhoneNumber().equals(Main.getUsers().getCurrentUser().getPhoneNumber())) {
+    public boolean haveInContacts(User selected) {
+        for (Contact contact : contacts) {
+            if (contact.getUser().getPhoneNumber().equals(selected.getPhoneNumber())) {
                 return true;
             }
         }
@@ -287,15 +280,6 @@ public class User {
                 Color.WHITE + "Security Number: " + Color.BLUE + securityNumber + '\n' + Color.WHITE +
                 "Account ID : " + Color.BLUE + account.getAccountID() +
                 '\n' + Color.CYAN + "*".repeat(35) + Color.RESET;
-    }
-
-    public Contact findContact(String phoneNumber) {
-        for (Contact contact : contacts) {
-            if (contact.getPhoneNumber().equals(phoneNumber)) {
-                return contact;
-            }
-        }
-        return null;
     }
 
     public void displayReceipts() {
@@ -392,5 +376,24 @@ public class User {
 
     public void removeFund(Fund fund) {
         funds.remove(fund);
+    }
+
+    public Contact findContact(String phoneNumber) {
+        for (Contact contact : contacts) {
+            if (contact.getPhoneNumber().equals(phoneNumber)) {
+                return contact;
+            }
+        }
+        return null;
+    }
+
+    public void updateContact(String oldPhoneNumber, Contact newContact) {
+        Contact oldContact = findContact(oldPhoneNumber);
+        if (oldContact != null) {
+            oldContact.setName(newContact.getName());
+            oldContact.setLastName(newContact.getLastName());
+            oldContact.setPhoneNumber(newContact.getPhoneNumber());
+            oldContact.setUser(Main.getUsers().findUserByPhoneNumber(newContact.getPhoneNumber()));
+        }
     }
 }

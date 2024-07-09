@@ -1,10 +1,12 @@
 package ir.ac.kntu;
 
+import java.io.Serializable;
+
 enum Status {SUBMITTED, PENDING, CLOSED}
 
 enum Type {REPORT, CONTACTS, TRANSFER, SETTINGS, AUTHENTICATION, FUNDS, CHARGE, CARD}
 
-public class Ticket {
+public class Ticket implements Serializable {
     private String userMessage;
     private String adminMessage;
     private Status status;

@@ -1,8 +1,9 @@
 package ir.ac.kntu;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class CreditCard {
+public class CreditCard implements Serializable {
     private String password;
     private String cardNumber;
 

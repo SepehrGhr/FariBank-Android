@@ -1,6 +1,8 @@
 package ir.ac.kntu;
 
-public class SavingFund extends Fund {
+import java.io.Serializable;
+
+public class SavingFund extends Fund implements Serializable {
 
     public SavingFund(User owner) {
         super(owner);
@@ -18,13 +20,13 @@ public class SavingFund extends Fund {
     }
 
     @Override
-    public void withdraw(long amount) {
+    public boolean withdraw(long amount) {
         if (getBalance() >= amount) {
             setBalance(getBalance() - amount);
             getOwner().getAccount().setBalance(getOwner().getAccount().getBalance() + amount);
-            System.out.println(Color.GREEN + "Selected amount was successfully withdrew from your saving fund" + Color.RESET);
+            return true;
         } else {
-            System.out.println(Color.RED + "Selected Fund's balance is not enough" + Color.RESET);
+            return false;
         }
     }
 
@@ -34,13 +36,18 @@ public class SavingFund extends Fund {
     }
 
     @Override
+    public String getName() {
+        return "Saving Fund";
+    }
+
+    @Override
     public void showBalance() {
         System.out.println(Color.WHITE + "Selected saving fund's current balance : " + Color.GREEN + getBalance() + Color.RESET);
     }
 
     @Override
     public String toString() {
-        return Color.CYAN + "*".repeat(35) + '\n' + Color.BLUE + "Saving Fund:" + '\n' + Color.WHITE + "Balance: "
-                + Color.BLUE + getBalance() + '\n' + Color.CYAN + "*".repeat(35) + Color.RESET;
+        return "Saving Fund:" + '\n' + "Balance: "
+                +  getBalance() + '\n';
     }
 }

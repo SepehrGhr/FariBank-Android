@@ -8,10 +8,25 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.FariBankAndroid"
         tools:targetApi="31">
+        <activity
+            android:name=".ManageFundActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FundsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TransferActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ContactDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ContactsActivity"
+            android:exported="false" />
         <activity
             android:name=".DashboardActivity"
             android:exported="false"

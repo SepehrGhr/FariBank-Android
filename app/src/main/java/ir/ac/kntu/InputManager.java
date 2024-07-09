@@ -349,7 +349,7 @@ public class InputManager {
                 Menu.printContactsMenu();
             }
             case "2" -> {
-                Main.getUsers().getCurrentUser().showAndEditContact();
+                //Main.getUsers().getCurrentUser().showAndEditContact();
                 Menu.printContactsMenu();
             }
             default -> Menu.printMenu(OptionEnums.UserMainMenuOption.values(), InputManager::handleUserMainMenuInput);
@@ -360,7 +360,6 @@ public class InputManager {
         String selection = getSelection(5);
         switch (selection) {
             case "1" -> {
-                Main.getUsers().getCurrentUser().getAccount().printChargeAccount();
                 Menu.printMenu(OptionEnums.ManagementMenuOption.values(), InputManager::handleManagementInput);
             }
             case "2" -> {

@@ -1,35 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="background_color">#F5F5F5</color>
-    <color name="primary_text">#212121</color>
-    <color name="secondary_text">#757575</color>
-    <color name="button_color">#6200EE</color>
-
-    <!-- Light theme colors -->
-    <color name="colorPrimary">#00008B</color>
+    <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryVariant">#3700B3</color>
     <color name="colorOnPrimary">#FFFFFF</color>
-    <color name="colorSecondary">#03DAC6</color>
+    <color name="colorSecondary">#03DAC5</color>
     <color name="colorSecondaryVariant">#018786</color>
     <color name="colorOnSecondary">#000000</color>
-    <color name="colorBackground">#FFFFFF</color>
-    <color name="colorForeground">#000000</color>
-    <color name="colorTextPrimary">#000000</color>
-    <color name="colorTextSecondary">#757575</color>
-    <color name="colorButton">#00008B</color>
-    <color name="colorOnButton">#FFFFFF</color>
+    <color name="colorBackground">#121212</color>
+    <color name="colorSurface">#121212</color>
+    <color name="colorOnSurface">#FFFFFF</color>
+    <color name="colorError">#CF6679</color>
+    <color name="colorOnError">#000000</color>
+    <color name="cardBackground">#4A90E2</color>
+    <color name="colorAccent">#1F1B24</color>
 
-    <!-- Dark theme colors -->
-    <color name="colorPrimaryDark">#00008B</color>
-    <color name="colorPrimaryVariantDark">#3700B3</color>
-    <color name="colorOnPrimaryDark">#000000</color>
-    <color name="colorSecondaryDark">#03DAC6</color>
-    <color name="colorSecondaryVariantDark">#03DAC6</color>
-    <color name="colorOnSecondaryDark">#000000</color>
+    <color name="colorPrimaryDark">#2196F3</color>
+    <color name="colorPrimaryVariantDark">#1976D2</color>
+    <color name="colorOnPrimaryDark">#FFFFFF</color>
+    <color name="colorSecondaryDark">#FFC107</color>
+    <color name="colorSecondaryVariantDark">#FFA000</color>
+    <color name="colorOnSecondaryDark">#212121</color>
     <color name="colorBackgroundDark">#121212</color>
-    <color name="colorForegroundDark">#FFFFFF</color>
-    <color name="colorTextPrimaryDark">#FFFFFF</color>
-    <color name="colorTextSecondaryDark">#B0B0B0</color>
+
 </resources>

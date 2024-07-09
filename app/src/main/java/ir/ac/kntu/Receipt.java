@@ -4,10 +4,11 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import java.io.Serializable;
 import java.time.Instant;
 import java.time.format.DateTimeParseException;
 
-public class Receipt {
+public class Receipt implements Serializable {
     private Instant time;
     private long amount;
 

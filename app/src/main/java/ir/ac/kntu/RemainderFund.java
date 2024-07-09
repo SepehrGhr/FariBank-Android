@@ -1,6 +1,8 @@
 package ir.ac.kntu;
 
-public class RemainderFund extends Fund {
+import java.io.Serializable;
+
+public class RemainderFund extends Fund implements Serializable {
 
     public RemainderFund(User owner) {
         super(owner);
@@ -33,19 +35,24 @@ public class RemainderFund extends Fund {
     }
 
     @Override
-    public void withdraw(long amount) {
+    public boolean withdraw(long amount) {
         if (getBalance() >= amount) {
             setBalance(getBalance() - amount);
             getOwner().getAccount().setBalance(getOwner().getAccount().getBalance() + amount);
-            System.out.println(Color.GREEN + "Selected amount was successfully withdrew from your remainder fund" + Color.RESET);
+            return true;
         } else {
-            System.out.println(Color.RED + "Selected Fund's balance is not enough" + Color.RESET);
+            return false;
         }
     }
 
     @Override
     public String getType() {
         return Color.YELLOW + "Remainder Fund" + Color.RESET;
+    }
+
+    @Override
+    public String getName() {
+        return "Remainder Fund";
     }
 
     @Override

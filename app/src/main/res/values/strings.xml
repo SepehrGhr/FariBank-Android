@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Fari Bank- Android</string>
+    <string name="app_name">Fari Bank</string>
     <string name="phone_number">Phone Number</string>
     <string name="login">Login</string>
     <string name="password">Password</string>

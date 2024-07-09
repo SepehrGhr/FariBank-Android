@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity {
@@ -22,10 +23,10 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         Main.main(new String[]{});
 
-        phoneNumberEditText = findViewById(R.id.phoneNumberEditText);
-        passwordEditText = findViewById(R.id.passwordEditText);
-        loginButton = findViewById(R.id.loginButton);
-        signupTextView = findViewById(R.id.signupTextView);
+        phoneNumberEditText = findViewById(R.id.inputUsername); // Update with correct ID
+        passwordEditText = findViewById(R.id.inputPassword); // Update with correct ID
+        loginButton = findViewById(R.id.button4); // Update with correct ID
+        signupTextView = findViewById(R.id.textView6); // Update with correct ID
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override

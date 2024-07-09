@@ -1,6 +1,10 @@
 package ir.ac.kntu;
 
-public class Contact {
+import java.io.Serial;
+import java.io.Serializable;
+import java.util.Objects;
+
+public class Contact implements Serializable {
     private User user;
     private String name;
     private String lastName;
@@ -24,6 +28,22 @@ public class Contact {
 
     public String getLastName() {
         return lastName;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getPhoneNumber() {
@@ -56,48 +76,44 @@ public class Contact {
 
     @Override
     public String toString() {
-        return Color.CYAN + "*".repeat(35) + '\n' + Color.WHITE +
-                "name : " + Color.BLUE + name + '\n' + Color.WHITE +
-                "lastName : " + Color.BLUE + lastName + '\n' + Color.WHITE +
-                "phoneNumber : " + Color.BLUE + phoneNumber + '\n' + Color.CYAN +
-                "*".repeat(35) + Color.RESET;
+        return "name : " + name + '\n' +
+                "lastName : " +  lastName + '\n' +
+                "phoneNumber : " + phoneNumber + '\n';
     }
 
-    public void edit() {
-        System.out.println(Color.WHITE + "Please enter the new name (enter 1 to remain the same)");
-        String selection = InputManager.getInput();
-        if (!"1".equals(selection)) {
-            name = selection;
-            System.out.println(Color.GREEN + "Contact name was successfully updated" + Color.RESET);
-        }
-        System.out.println(Color.WHITE + "Please enter the new last name (enter 1 to remain the same)");
-        selection = InputManager.getInput();
-        if (!"1".equals(selection)) {
-            lastName = selection;
-            System.out.println(Color.GREEN + "Contact lastname was successfully updated" + Color.RESET);
-        }
-        System.out.println(Color.WHITE + "Please enter the new phone number (enter 1 to remain the same)");
-        selection = InputManager.getInput();
-        if (!"1".equals(selection)) {
-            while (!Menu.checkPhoneNumberValidity(selection)) {
-                System.out.println(Color.RED + "Please enter your phone number correctly" + Color.RESET);
-                selection = InputManager.getInput();
-            }
-            if (Main.getUsers().getCurrentUser().contactAlreadyExists(selection)) {
-                System.out.println(Color.RED + "A contact with this phone number already exists" + Color.RESET);
-                return;
-            }
-            if (Main.getUsers().findUserByPhoneNumber(selection) == null) {
-                System.out.println(Color.RED + "There is no user with this phone number in our bank" + Color.RESET);
-                return;
-            }
-            updatePhoneNumber(selection);
-        }
+    public void edit(String newName, String newLastName, String newPhoneNum) {
+        name = newName;
+        lastName = newLastName;
+        phoneNumber = newPhoneNum;
+        user = Main.getUsers().findUserByPhoneNumber(newPhoneNum);
+//            if (Main.getUsers().getCurrentUser().contactAlreadyExists(selection)) {
+//                System.out.println(Color.RED + "A contact with this phone number already exists" + Color.RESET);
+//                return;
+//            }
+//            if (Main.getUsers().findUserByPhoneNumber(selection) == null) {
+//                System.out.println(Color.RED + "There is no user with this phone number in our bank" + Color.RESET);
+//                return;
+//            }
+//            updatePhoneNumber(selection);
+//        }
     }
 
     private void updatePhoneNumber(String selection) {
         user = Main.getUsers().findUserByPhoneNumber(selection);
         phoneNumber = selection;
         System.out.println(Color.GREEN + "Selected contact has been successfully edited!!" + Color.RESET);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Contact contact = (Contact) o;
+        return Objects.equals(user, contact.user);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(user);
     }
 }

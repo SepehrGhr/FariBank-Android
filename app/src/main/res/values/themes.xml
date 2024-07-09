@@ -1,35 +1,16 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.FariBankAndroid" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Primary branding color for the app -->
+<resources>
+    <!-- Base application theme -->
+    <style name="Theme.FariBankAndroid" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
         <item name="colorOnPrimary">@color/colorOnPrimary</item>
-
-        <!-- Secondary branding color for the app -->
+        <!-- Secondary brand color -->
         <item name="colorSecondary">@color/colorSecondary</item>
         <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
         <item name="colorOnSecondary">@color/colorOnSecondary</item>
-
-        <!-- Background color for the app -->
-        <item name="android:colorBackground">@color/colorBackground</item>
-        <item name="android:colorForeground">@color/colorForeground</item>
-
-        <!-- Customize typography -->
-        <item name="android:fontFamily">@font/roboto_bold</item>
-        <item name="android:textColorPrimary">@color/colorTextPrimary</item>
-        <item name="android:textColorSecondary">@color/colorTextSecondary</item>
-
-        <!-- Button styles -->
-        <item name="buttonStyle">@style/Widget.FariBankAndroid.Button</item>
-    </style>
-
-    <style name="Theme.FariBankAndroid" parent="Base.Theme.FariBankAndroid" />
-
-    <style name="Widget.FariBankAndroid.Button" parent="Widget.Material3.Button">
-        <item name="android:backgroundTint">@color/colorButton</item>
-        <item name="android:textColor">@color/colorOnButton</item>
-        <item name="android:padding">12dp</item>
-        <item name="android:fontFamily">@font/roboto_bold</item>
+        <!-- Background color -->
+        <item name="android:windowBackground">@color/colorBackground</item>
+        <!-- Customize your theme here -->
     </style>
 </resources>
