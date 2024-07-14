@@ -11,6 +11,7 @@ enum Filter {NAME, LASTNAME, USERNAME, PHONE_NUMBER, RULE}
 public class ManagerData {
     private final List<Manager> managers;
     private final List<InterestFund> interestFunds;
+    private final List<Loan> allLoans;
     private final List<Paya> pendingPaya;
     private Manager currentManager;
     private final FeeRate feeRate;
@@ -23,6 +24,7 @@ public class ManagerData {
         this.managers = new ArrayList<>();
         this.interestFunds = new ArrayList<>();
         this.pendingPaya = new ArrayList<>();
+        this.allLoans = new ArrayList<>();
         this.processStarted = false;
     }
 
@@ -36,6 +38,13 @@ public class ManagerData {
 
     public double getInterestRate() {
         return interestRate;
+    }
+
+    public void addLoan(Loan loan) {
+        allLoans.add(loan);
+        if (allLoans.size() == 1){
+            startLoanProcess();
+        }
     }
 
     public void setInterestRate(double interestRate) {
@@ -68,6 +77,19 @@ public class ManagerData {
         scheduler.schedule(task, 30, TimeUnit.SECONDS);
     }
 
+    public void loanReqScheduler(LoanRequest loanReq){
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+        Runnable task = () -> {
+            loanReq.checkApproval();
+            scheduler.shutdown();
+        };
+        scheduler.schedule(task, 20, TimeUnit.SECONDS);
+    }
+
+    public void addLoanReq(LoanRequest loanRequest){
+        loanReqScheduler(loanRequest);
+    }
+
     public void removeInterestFund(InterestFund fund) {
         interestFunds.remove(fund);
     }
@@ -76,6 +98,12 @@ public class ManagerData {
         InterestDepositRunnable interestRunnable = new InterestDepositRunnable();
         Thread interestThread = new Thread(interestRunnable);
         interestThread.start();
+    }
+
+    private void startLoanProcess() {
+        LoanRunnable loanRunnable = new LoanRunnable();
+        Thread loanThread = new Thread(loanRunnable);
+        loanThread.start();
     }
 
     public void setCurrentManager(Manager currentManager) {
@@ -100,6 +128,12 @@ public class ManagerData {
             if (fund.getReceivedCount() < fund.getMustReceiveCount()) {
                 fund.depositInterest();
             }
+        }
+    }
+
+    public void handleLoansFirstOfMonth() {
+        for (Loan loan : allLoans) {
+            loan.firstOfMonthOperation();
         }
     }
 
@@ -220,7 +254,7 @@ public class ManagerData {
                         System.out.println(Color.RED + ((Manager) theOne).getName() + Color.RESET);
                     }
                 });
-        if(selected == null){
+        if (selected == null) {
             return;
         }
         if (selected instanceof User) {
@@ -271,7 +305,7 @@ public class ManagerData {
         System.out.println(Color.GREEN + "New manager has been added successfully" + Color.RESET);
     }
 
-    public void addNewManager(Manager newManager){
+    public void addNewManager(Manager newManager) {
         managers.add(newManager);
     }
 

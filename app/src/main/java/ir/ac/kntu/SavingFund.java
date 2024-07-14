@@ -10,10 +10,9 @@ public class SavingFund extends Fund implements Serializable {
 
     @Override
     public void deposit(long amount) {
-        if (getOwner().getAccount().getBalance() >= amount) {
+        if (Main.getUsers().getCurrentUser().getAccount().getBalance() >= amount) {
             setBalance(getBalance() + amount);
-            getOwner().getAccount().setBalance(getOwner().getAccount().getBalance() - amount);
-            System.out.println(Color.GREEN + "Selected amount was successfully deposited to your saving fund" + Color.RESET);
+            Main.getUsers().getCurrentUser().getAccount().withdrawMoney(amount, getOwner());
         } else {
             System.out.println(Color.RED + "Your account's balance is not enough" + Color.RESET);
         }
@@ -23,7 +22,7 @@ public class SavingFund extends Fund implements Serializable {
     public boolean withdraw(long amount) {
         if (getBalance() >= amount) {
             setBalance(getBalance() - amount);
-            getOwner().getAccount().setBalance(getOwner().getAccount().getBalance() + amount);
+            Main.getUsers().getCurrentUser().getAccount().setBalance(getOwner().getAccount().getBalance() + amount);
             return true;
         } else {
             return false;

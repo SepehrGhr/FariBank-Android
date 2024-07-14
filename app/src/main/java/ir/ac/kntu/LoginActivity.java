@@ -23,10 +23,10 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         Main.main(new String[]{});
 
-        phoneNumberEditText = findViewById(R.id.inputUsername); // Update with correct ID
-        passwordEditText = findViewById(R.id.inputPassword); // Update with correct ID
-        loginButton = findViewById(R.id.button4); // Update with correct ID
-        signupTextView = findViewById(R.id.textView6); // Update with correct ID
+        phoneNumberEditText = findViewById(R.id.inputUsername);
+        passwordEditText = findViewById(R.id.inputPassword);
+        loginButton = findViewById(R.id.button4);
+        signupTextView = findViewById(R.id.textView6);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override

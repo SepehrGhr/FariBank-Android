@@ -46,9 +46,8 @@ public class FundsActivity extends AppCompatActivity {
 
         fundsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        User currentUser = Main.getUsers().getCurrentUser();
-        if (currentUser != null) {
-            funds = (ArrayList<Fund>) currentUser.getFunds();
+        if (Main.getUsers().getCurrentUser() != null) {
+            funds = (ArrayList<Fund>) Main.getUsers().getCurrentUser().getFunds();
             fundsAdapter = new FundsAdapter(funds, fund -> {
                 Intent intent = new Intent(FundsActivity.this, ManageFundActivity.class);
                 intent.putExtra("fund", fund);
@@ -78,10 +77,10 @@ public class FundsActivity extends AppCompatActivity {
         Button interestFundButton = dialog.findViewById(R.id.interestFundButton);
         Button remainderFundButton = dialog.findViewById(R.id.remainderFundButton);
 
-        User currentUser = Main.getUsers().getCurrentUser();
+
 
         savingFundButton.setOnClickListener(v -> {
-            currentUser.addFund(new SavingFund(currentUser));
+            Main.getUsers().getCurrentUser().addFund(new SavingFund(Main.getUsers().getCurrentUser()));
             fundsAdapter.notifyItemInserted(funds.size() - 1);
             dialog.dismiss();
         });
@@ -92,11 +91,11 @@ public class FundsActivity extends AppCompatActivity {
         });
 
         remainderFundButton.setOnClickListener(v -> {
-            if (currentUser.isHasRemainderFund()) {
+            if (Main.getUsers().getCurrentUser().isHasRemainderFund()) {
                 Toast.makeText(this, "You already have a remainder fund", Toast.LENGTH_SHORT).show();
             } else {
-                currentUser.addFund(new RemainderFund(currentUser));
-                currentUser.setHasRemainderFund(true);
+                Main.getUsers().getCurrentUser().addFund(new RemainderFund(Main.getUsers().getCurrentUser()));
+                Main.getUsers().getCurrentUser().setHasRemainderFund(true);
                 fundsAdapter.notifyItemInserted(funds.size() - 1);
             }
             dialog.dismiss();
@@ -106,7 +105,6 @@ public class FundsActivity extends AppCompatActivity {
     }
 
     private void createNewInterestFund() {
-        // Show dialog to get the month count and initial amount
         Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.dialog_create_interest_fund);
 
@@ -124,16 +122,15 @@ public class FundsActivity extends AppCompatActivity {
 
             int monthCount = Integer.parseInt(monthCountStr);
             long amount = Long.parseLong(amountStr);
-            User currentUser = Main.getUsers().getCurrentUser();
 
-            if (amount > currentUser.getAccount().getBalance()) {
+            if (amount > Main.getUsers().getCurrentUser().getAccount().getBalance()) {
                 Toast.makeText(this, "Insufficient balance", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            currentUser.getAccount().setBalance(currentUser.getAccount().getBalance() - amount);
-            InterestFund newFund = new InterestFund(currentUser, monthCount, amount);
-            currentUser.addFund(newFund);
+            Main.getUsers().getCurrentUser().getAccount().setBalance(Main.getUsers().getCurrentUser().getAccount().getBalance() - amount);
+            InterestFund newFund = new InterestFund(Main.getUsers().getCurrentUser(), monthCount, amount);
+            Main.getUsers().getCurrentUser().addFund(newFund);
             Main.getManagerData().addNewInterestFund(newFund);
             fundsAdapter.notifyDataSetChanged();
             dialog.dismiss();

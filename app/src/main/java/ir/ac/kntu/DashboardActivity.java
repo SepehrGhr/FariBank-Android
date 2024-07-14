@@ -94,7 +94,8 @@ public class DashboardActivity extends AppCompatActivity {
         });
 
         loansButton.setOnClickListener(v -> {
-            // Handle loan action
+            Intent intent = new Intent(DashboardActivity.this, LoansActivity.class);
+            startActivity(intent);
         });
     }
 
@@ -128,6 +129,11 @@ public class DashboardActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+        updateReceiptsAndBalance();
+    }
     public void updateReceiptsAndBalance() {
         User currentUser = Main.getUsers().getCurrentUser();
         if (currentUser != null) {

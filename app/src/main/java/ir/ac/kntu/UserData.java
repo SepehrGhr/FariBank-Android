@@ -488,4 +488,8 @@ public class UserData {
     public void addUsersToList(List<Object> matched) {
         matched.addAll(allUsers);
     }
+
+    public List<User> getAllUsers() {
+        return allUsers;
+    }
 }

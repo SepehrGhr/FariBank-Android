@@ -32,9 +32,9 @@ public class InterestFund extends Fund implements Serializable {
     @Override
     public void deposit(long amount) {
         if(canWithdraw){
-            if (getOwner().getAccount().getBalance() >= amount) {
+            if (Main.getUsers().getCurrentUser().getAccount().getBalance() >= amount) {
                 setBalance(getBalance() + amount);
-                getOwner().getAccount().setBalance(getOwner().getAccount().getBalance() - amount);
+                Main.getUsers().getCurrentUser().getAccount().withdrawMoney(amount, Main.getUsers().getCurrentUser());
                 System.out.println(Color.GREEN + "Selected amount was successfully deposited to your interest fund" + Color.RESET);
             } else {
                 System.out.println(Color.RED + "Your account's balance is not enough" + Color.RESET);
@@ -49,7 +49,7 @@ public class InterestFund extends Fund implements Serializable {
         if(canWithdraw){
             if (getBalance() >= amount) {
                 setBalance(getBalance() - amount);
-                getOwner().getAccount().setBalance(getOwner().getAccount().getBalance() + amount);
+                Main.getUsers().getCurrentUser().getAccount().setBalance(getOwner().getAccount().getBalance() + amount);
                 return true;
             } else {
                 return false;

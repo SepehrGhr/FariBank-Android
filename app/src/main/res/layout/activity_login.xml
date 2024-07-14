@@ -52,7 +52,7 @@
             android:id="@+id/inputPassword"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:textColor="#5B5B5B"
+            android:textColor="#A7A7A7"
             android:textSize="15sp"
             android:textStyle="bold"
             tools:ignore="TouchTargetSizeCheck" />

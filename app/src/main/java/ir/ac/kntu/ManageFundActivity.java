@@ -37,6 +37,14 @@ public class ManageFundActivity extends AppCompatActivity {
             fundBalanceTextView.setText(String.valueOf(selectedFund.getBalance()));
         }
 
+        for(Fund fund : Main.getUsers().getCurrentUser().getFunds()){
+            long o = fund.getId();
+            long b = selectedFund.getId();
+            if(fund.getId() == selectedFund.getId()){
+                selectedFund = fund;
+            }
+        }
+
         depositButton.setOnClickListener(v -> {
             String amountStr = amountEditText.getText().toString();
             if (!amountStr.isEmpty()) {
@@ -67,6 +75,16 @@ public class ManageFundActivity extends AppCompatActivity {
         Intent resultIntent = new Intent();
         resultIntent.putExtra("updatedFund", selectedFund);
         setResult(RESULT_OK, resultIntent);
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        for(Fund fund : Main.getUsers().getCurrentUser().getFunds()){
+            if(fund.getId() == selectedFund.getId()){
+                selectedFund = fund;
+            }
+        }
     }
 
     @Override

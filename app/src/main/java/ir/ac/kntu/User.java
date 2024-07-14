@@ -16,11 +16,13 @@ public class User implements Serializable {
     private PhoneNumber phoneNumber;
     private String securityNumber;
     private String password;
-    private List<Contact> contacts;
-    private List<User> recentUsers;
-    private List<Ticket> tickets;
-    private List<Receipt> receipts;
-    private List<Fund> funds;
+    private final List<Contact> contacts;
+    private final List<User> recentUsers;
+    private final List<Ticket> tickets;
+    private final List<Receipt> receipts;
+    private final List<Fund> funds;
+    private final List<Loan> loans;
+    private final List<LoanRequest> loanRequests;
     private Account account;
     private RemainderFund remainderFund;
     private boolean authenticated = false;
@@ -39,6 +41,8 @@ public class User implements Serializable {
         this.tickets = new ArrayList<>();
         this.receipts = new ArrayList<>();
         this.funds = new ArrayList<>();
+        this.loans = new ArrayList<>();
+        this.loanRequests = new ArrayList<>();
     }
 
     public String getPhoneNumber() {
@@ -59,6 +63,22 @@ public class User implements Serializable {
 
     public List<Fund> getFunds() {
         return funds;
+    }
+
+    public List<Loan> getLoans() {
+        return loans;
+    }
+
+    public List<LoanRequest> getLoanRequests() {
+        return loanRequests;
+    }
+
+    public void addLoan(Loan loan){
+        loans.add(loan);
+    }
+
+    public void addLoanRequest(LoanRequest loanReq){
+        loanRequests.add(loanReq);
     }
 
     public boolean isBlocked() {
@@ -194,7 +214,7 @@ public class User implements Serializable {
     }
 
     public User selectRecentUserFromList() {
-        if (recentUsers.size() == 0) {
+        if (recentUsers.isEmpty()) {
             System.out.println(Color.RED + "You haven't transferred money to anyone yet" + Color.RESET);
             return null;
         }
