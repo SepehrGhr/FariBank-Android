@@ -55,12 +55,6 @@ public class RemainderFund extends Fund implements Serializable {
         return "Remainder Fund";
     }
 
-    @Override
-    public void showBalance() {
-        System.out.println(Color.WHITE + "Selected remainder fund's current balance : " + Color.GREEN + getBalance() + Color.RESET);
-    }
-
-
     public void handleAccountWithdraw(long amount) {
         getOwner().getAccount().setBalance(getOwner().getAccount().getBalance() - amount);
         long worthless = separateWorthlessDigits(amount);

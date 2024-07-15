@@ -61,20 +61,6 @@ public class InterestFund extends Fund implements Serializable {
     }
 
     @Override
-    public void openManagement() {
-        if(canWithdraw){
-            System.out.println(Color.GREEN + "Time of the selected interest fund is finished." + Color.RESET);
-            System.out.println(Color.WHITE + "Press any button to withdraw the money to your account and delete fund" + Color.RESET);
-            InputManager.getInput();
-            Main.getUsers().getCurrentUser().removeFund(this);
-            Main.getUsers().getCurrentUser().getAccount().setBalance(Main.getUsers().getCurrentUser().getAccount().getBalance() + getBalance());
-            Main.getManagerData().removeInterestFund(this);
-        } else {
-            Menu.printMenu(OptionEnums.SelectedFundMenu.values(), this::handleManagementInput);
-        }
-    }
-
-    @Override
     public String getName() {
         return "Interest Fund";
     }
@@ -82,11 +68,6 @@ public class InterestFund extends Fund implements Serializable {
     @Override
     public String getType() {
         return Color.CYAN + "Interest Fund" + Color.RESET;
-    }
-
-    @Override
-    public void showBalance() {
-        System.out.println(Color.WHITE + "Selected interest fund's current balance : " + Color.GREEN + getBalance() + Color.RESET);
     }
 
     public void depositInterest() {

@@ -1,6 +1,6 @@
 package ir.ac.kntu;
 
-public class SimcardReceipt extends Receipt{
+public class SimcardReceipt extends Receipt {
     private String phoneNumber;
 
     public SimcardReceipt(long amount, String phoneNumber) {
@@ -14,7 +14,7 @@ public class SimcardReceipt extends Receipt{
 
     @Override
     public String toString() {
-        return super.toString() + "Phone Number : " + phoneNumber + '\n' ;
+        return super.toString() + "Phone Number : " + phoneNumber + '\n';
     }
 }
 

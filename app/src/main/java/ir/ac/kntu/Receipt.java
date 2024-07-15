@@ -29,8 +29,8 @@ public class Receipt implements Serializable {
 
     @Override
     public String toString() {
-        return "Date : " +  timeToString(time) +
-                '\n' + "Amount : " + amount + '\n' ;
+        return "Date : " + timeToString(time) +
+                '\n' + "Amount : " + amount + '\n';
     }
 
     public String timeToString(Instant time) {
@@ -40,7 +40,7 @@ public class Receipt implements Serializable {
     public void printSimpleReceipt() {
         if (this instanceof ChargeReceipt) {
             System.out.println(Color.GREEN + this.timeToString(this.getTime()) + Color.RESET);
-        } else if(this instanceof TransferReceipt) {
+        } else if (this instanceof TransferReceipt) {
             System.out.println(Color.YELLOW + this.timeToString(this.getTime()) + Color.RESET);
         } else {
             System.out.println(Color.BLUE + this.timeToString(this.getTime()) + Color.RESET);

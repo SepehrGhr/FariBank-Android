@@ -77,7 +77,7 @@ public class Contact implements Serializable {
     @Override
     public String toString() {
         return "name : " + name + '\n' +
-                "lastName : " +  lastName + '\n' +
+                "lastName : " + lastName + '\n' +
                 "phoneNumber : " + phoneNumber + '\n';
     }
 
@@ -106,8 +106,12 @@ public class Contact implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Contact contact = (Contact) o;
         return Objects.equals(user, contact.user);
     }

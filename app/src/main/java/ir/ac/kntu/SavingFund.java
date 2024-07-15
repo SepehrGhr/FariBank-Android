@@ -40,11 +40,6 @@ public class SavingFund extends Fund implements Serializable {
     }
 
     @Override
-    public void showBalance() {
-        System.out.println(Color.WHITE + "Selected saving fund's current balance : " + Color.GREEN + getBalance() + Color.RESET);
-    }
-
-    @Override
     public String toString() {
         return "Saving Fund:" + '\n' + "Balance: "
                 +  getBalance() + '\n';

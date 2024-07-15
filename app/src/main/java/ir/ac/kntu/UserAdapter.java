@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.compose.ui.graphics.Color;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -30,7 +31,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
         User user = users.get(position);
-        holder.tvUserName.setText(user.getName());
+        holder.getTvUserName().setText(user.getName());
+        holder.getTvUserName().setTextColor(0xFFFFFFFF);
         holder.itemView.setOnClickListener(v -> listener.onUserClick(user));
     }
 
@@ -41,7 +43,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
     static class UserViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvUserName;
+        private TextView tvUserName;
+
+        public TextView getTvUserName() {
+            return tvUserName;
+        }
 
         public UserViewHolder(@NonNull View itemView) {
             super(itemView);

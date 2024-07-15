@@ -49,29 +49,9 @@ public class Ticket implements Serializable {
         return type;
     }
 
-    private static void addTicketToDatabase(Ticket newTicket) {
-        Main.getUsers().getCurrentUser().addNewTicket(newTicket);
-        Main.getAdminData().addNewTicket(newTicket);
-    }
-
     public void setWeWillContactMessage(){
         adminMessage = "Our colleagues will contact you soon";
         status = Status.CLOSED;
-    }
-
-
-    @Override
-    public String toString() {
-        if (type.equals(Type.AUTHENTICATION)) {
-            Main.getAdminData().getRequests().get(submitter).showUserInformation();
-        } else {
-            return Color.CYAN + "*".repeat(35) + '\n' + Color.WHITE + "Type : " +
-                    Color.BLUE + type.toString() + '\n' + Color.WHITE + "Status : " +
-                    Color.BLUE + status.toString() + '\n' + Color.WHITE + "User message : " +
-                    Color.BLUE + userMessage + '\n' + Color.WHITE + "Admin message : " + Color.BLUE +
-                    adminMessage + '\n' + Color.CYAN + "*".repeat(35) + Color.RESET;
-        }
-        return "";
     }
 }
 

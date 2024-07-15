@@ -30,8 +30,8 @@ public class TransferReceipt extends Receipt {
 
     @Override
     public String toString() {
-        if(method.equals(Method.CONTACT)){
-            return super.toString()  + "Transfer method : " +  "to contact" +
+        if (method.equals(Method.CONTACT)) {
+            return super.toString() + "Transfer method : " + "to contact" +
                     '\n' + "Transmitter : " + transmitter.getName() + " " +
                     transmitter.getLastName() + '\n' + "Receiver : " +
                     transmitter.findContact(receiver.getPhoneNumber()).getName() + " " +
@@ -39,10 +39,10 @@ public class TransferReceipt extends Receipt {
                     "Transfer ID : " + transferId + '\n';
         }
         return super.toString() + "Transfer method : " + "by AccountID" +
-                '\n' +  "Transmitter : " + transmitter.getName() + " " +
+                '\n' + "Transmitter : " + transmitter.getName() + " " +
                 transmitter.getLastName() + '\n' + "Receiver : " +
                 receiver.getName() + " " + receiver.getLastName() + '\n' +
-                "Transfer ID : " + transferId + '\n' ;
+                "Transfer ID : " + transferId + '\n';
     }
 }
 

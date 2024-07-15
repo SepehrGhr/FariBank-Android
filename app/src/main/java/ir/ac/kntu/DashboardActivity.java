@@ -130,6 +130,7 @@ public class DashboardActivity extends AppCompatActivity {
         super.onResume();
         updateReceiptsAndBalance();
     }
+
     public void updateReceiptsAndBalance() {
         User currentUser = Main.getUsers().getCurrentUser();
         if (currentUser != null) {
