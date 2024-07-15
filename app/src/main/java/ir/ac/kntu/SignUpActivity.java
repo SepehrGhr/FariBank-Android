@@ -63,7 +63,7 @@ public class SignUpActivity extends AppCompatActivity {
             return false;
         }
 
-        if (securityNumber.length() != 10 || !securityNumber.matches("[1-9]+")) {
+        if (securityNumber.length() != 10 || !securityNumber.matches("\\d+")) {
             securityNumberEditText.setError("Invalid security number");
             return false;
         }

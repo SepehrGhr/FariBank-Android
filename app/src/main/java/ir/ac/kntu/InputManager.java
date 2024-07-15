@@ -292,7 +292,7 @@ public class InputManager {
         String selection = getSelection(3);
         switch (selection) {
             case "1" -> {
-                Ticket.submitNewTicket();
+                //Ticket.submitNewTicket();
                 Menu.printMenu(OptionEnums.SupportMenuOption.values(), InputManager::handleSupportInput);
             }
             case "2" -> {

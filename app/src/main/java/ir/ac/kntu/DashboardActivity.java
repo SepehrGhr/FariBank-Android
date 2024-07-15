@@ -46,7 +46,6 @@ public class DashboardActivity extends AppCompatActivity {
         MaterialButton addMoneyButton = findViewById(R.id.addMoneyButton);
         MaterialButton contactsButton = findViewById(R.id.contactsButton);
         MaterialButton supportButton = findViewById(R.id.supportButton);
-        MaterialButton manageButton = findViewById(R.id.manageButton);
         MaterialButton logoutButton = findViewById(R.id.logoutButton);
         MaterialButton transferButton = findViewById(R.id.transferButton);
         MaterialButton fundsButton = findViewById(R.id.fundsButton);
@@ -67,17 +66,14 @@ public class DashboardActivity extends AppCompatActivity {
         });
 
         supportButton.setOnClickListener(v -> {
-            // Navigate to support
-        });
-
-        manageButton.setOnClickListener(v -> {
-            // Navigate to Manage
+            Intent intent = new Intent(DashboardActivity.this, SupportsActivity.class);
+            startActivity(intent);
         });
 
         logoutButton.setOnClickListener(v -> {
-            Main.getUsers().setCurrentUser(null); // Set current user to null
-            Intent intent = new Intent(DashboardActivity.this, LoginActivity.class); // Navigate to login screen
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Clear the activity stack
+            Main.getUsers().setCurrentUser(null);
+            Intent intent = new Intent(DashboardActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         });
 

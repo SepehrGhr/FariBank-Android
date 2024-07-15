@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class AdminData {
     private final Map<User, AuthenticationRequest> requests;
@@ -53,6 +56,16 @@ public class AdminData {
 
     public void addNewTicket(Ticket newTicket) {
         tickets.add(newTicket);
+        ticketScheduler(newTicket);
+    }
+
+    public void ticketScheduler(Ticket newTicket){
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+        Runnable task = () -> {
+            newTicket.setWeWillContactMessage();
+            scheduler.shutdown();
+        };
+        scheduler.schedule(task, 20, TimeUnit.SECONDS);
     }
 
     public void displayTicketsMenu() {

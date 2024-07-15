@@ -1,45 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorBackground">
 
     <EditText
         android:id="@+id/et_account_id_card_number"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorOnPrimary"
-        android:hint="Enter Account ID/Card Number" />
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Enter Account ID/Card Number"
+        android:background="@drawable/edit_text_background"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:inputType="text"
+        android:drawablePadding="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_select_recent_user"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Select from Recent Users" />
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Select from Recent Users"
+        android:textColor="@color/colorOnPrimary"
+        android:background="@drawable/button_background"
+        android:textSize="16sp"
+        android:padding="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_account_id_card_number" />
 
     <Button
         android:id="@+id/btn_select_contact"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Select from Contacts" />
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Select from Contacts"
+        android:textColor="@color/colorOnPrimary"
+        android:background="@drawable/button_background"
+        android:textSize="16sp"
+        android:padding="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_select_recent_user" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_recent_users_contacts"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:visibility="gone" />
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_select_contact" />
 
     <EditText
         android:id="@+id/et_transfer_amount"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Enter Amount" />
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Enter Amount"
+        android:background="@drawable/edit_text_background"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:inputType="numberDecimal"
+        android:drawablePadding="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rv_recent_users_contacts" />
 
     <Button
         android:id="@+id/btn_transfer"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Transfer" />
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Transfer"
+        android:textColor="@color/colorOnPrimary"
+        android:background="@drawable/button_background"
+        android:textSize="16sp"
+        android:padding="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_transfer_amount" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

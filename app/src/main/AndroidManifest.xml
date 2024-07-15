@@ -13,6 +13,9 @@
         android:theme="@style/Theme.FariBankAndroid"
         tools:targetApi="31">
         <activity
+            android:name=".SupportsActivity"
+            android:exported="false" />
+        <activity
             android:name=".UserLoansActivity"
             android:exported="false" />
         <activity

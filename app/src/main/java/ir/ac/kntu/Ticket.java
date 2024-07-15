@@ -49,50 +49,16 @@ public class Ticket implements Serializable {
         return type;
     }
 
-    public static void submitNewTicket() {
-        printTicketTypes();
-        String selection = InputManager.getSelection(8);
-        switch (selection) {
-            case "1" -> createTicket(Type.REPORT);
-            case "2" -> createTicket(Type.CONTACTS);
-            case "3" -> createTicket(Type.TRANSFER);
-            case "4" -> createTicket(Type.SETTINGS);
-            case "5" -> createTicket(Type.FUNDS);
-            case "6" -> createTicket(Type.CHARGE);
-            case "7" -> createTicket(Type.CARD);
-            default -> {}
-        }
-
-    }
-
-    private static void createTicket(Type type) {
-        String message = getTicketMessage();
-        Ticket newTicket = new Ticket(message, type, Main.getUsers().getCurrentUser());
-        addTicketToDatabase(newTicket);
-    }
-
     private static void addTicketToDatabase(Ticket newTicket) {
         Main.getUsers().getCurrentUser().addNewTicket(newTicket);
         Main.getAdminData().addNewTicket(newTicket);
-        System.out.println(Color.GREEN + "Your Ticket has been submitted successfully ! our admins will help you soon" + Color.RESET);
     }
 
-    private static String getTicketMessage() {
-        System.out.println(Color.WHITE + "Please write your problem for our admins" + Color.RESET);
-        return InputManager.getInput();
+    public void setWeWillContactMessage(){
+        adminMessage = "Our colleagues will contact you soon";
+        status = Status.CLOSED;
     }
 
-    private static void printTicketTypes() {
-        System.out.println(Color.WHITE + "1-" + Color.BLUE + "Report" + Color.RESET);
-        System.out.println(Color.WHITE + "2-" + Color.BLUE + "Contacts" + Color.RESET);
-        System.out.println(Color.WHITE + "3-" + Color.BLUE + "Transfer" + Color.RESET);
-        System.out.println(Color.WHITE + "4-" + Color.BLUE + "Settings" + Color.RESET);
-        System.out.println(Color.WHITE + "5-" + Color.BLUE + "Funds" + Color.RESET);
-        System.out.println(Color.WHITE + "6-" + Color.BLUE + "Charge" + Color.RESET);
-        System.out.println(Color.WHITE + "7-" + Color.BLUE + "Card" + Color.RESET);
-        System.out.println(Color.WHITE + "8-" + Color.BLUE + "Return" + Color.RESET);
-        System.out.println(Color.WHITE + "Please enter the number of the option you want to select" + Color.RESET);
-    }
 
     @Override
     public String toString() {

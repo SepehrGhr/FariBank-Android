@@ -32,7 +32,6 @@ public class TransferActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transfer);
 
-        // Initialize views
         etAccountIdCardNumber = findViewById(R.id.et_account_id_card_number);
         etTransferAmount = findViewById(R.id.et_transfer_amount);
         btnSelectRecentUser = findViewById(R.id.btn_select_recent_user);
@@ -43,12 +42,10 @@ public class TransferActivity extends AppCompatActivity {
         userData = Main.getUsers();
         currentUser = userData.getCurrentUser();
 
-        // Set up button click listeners
         btnSelectRecentUser.setOnClickListener(view -> showRecentUsers());
         btnSelectContact.setOnClickListener(view -> showContacts());
         btnTransfer.setOnClickListener(view -> validateAndTransfer());
 
-        // Set up RecyclerView
         rvRecentUsersContacts.setLayoutManager(new LinearLayoutManager(this));
     }
 
@@ -80,7 +77,7 @@ public class TransferActivity extends AppCompatActivity {
 
     private void onUserSelected(User user) {
         selectedUser = user;
-        etAccountIdCardNumber.setText(user.getAccount().getAccountID()); // Optional: show selected user info
+        etAccountIdCardNumber.setText(user.getAccount().getAccountID());
         rvRecentUsersContacts.setVisibility(View.GONE);
     }
 

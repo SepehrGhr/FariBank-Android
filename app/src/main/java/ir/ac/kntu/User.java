@@ -416,4 +416,8 @@ public class User implements Serializable {
             oldContact.setUser(Main.getUsers().findUserByPhoneNumber(newContact.getPhoneNumber()));
         }
     }
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
 }
