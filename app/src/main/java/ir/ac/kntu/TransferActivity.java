@@ -146,6 +146,7 @@ public class TransferActivity extends AppCompatActivity {
 
         currentUser.getAccount().withdrawMoney(totalAmount, currentUser);
         selectedUser.getAccount().setBalance( (selectedUser.getAccount().getBalance() + amount));
+        currentUser.addToRecentUsers(selectedUser);
         currentUser.addReceipt(new TransferReceipt( amount, currentUser, selectedUser, Method.ACCOUNT));
         selectedUser.addReceipt(new TransferReceipt( amount, currentUser, selectedUser, Method.ACCOUNT));
 

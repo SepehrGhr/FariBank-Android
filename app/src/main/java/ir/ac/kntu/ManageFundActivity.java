@@ -50,7 +50,7 @@ public class ManageFundActivity extends AppCompatActivity {
             if (!amountStr.isEmpty()) {
                 long amount = Long.parseLong(amountStr);
                 selectedFund.deposit(amount);
-                Toast.makeText(ManageFundActivity.this, "test", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ManageFundActivity.this, "deposit made successfully", Toast.LENGTH_SHORT).show();
                 fundBalanceTextView.setText(String.valueOf(selectedFund.getBalance()));
                 updateBalance();
             } else {

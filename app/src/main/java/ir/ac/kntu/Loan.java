@@ -69,12 +69,14 @@ public class Loan implements Serializable {
     }
 
     public void doPayment() {
-        paymentCount++;
-        if (delayedCount > 0) {
-            delayedCount--;
-        }
-        if (paymentCount == months) {
-            finished = true;
+        if (!finished) {
+            paymentCount++;
+            if (delayedCount > 0) {
+                delayedCount--;
+            }
+            if (paymentCount == months) {
+                finished = true;
+            }
         }
     }
 }

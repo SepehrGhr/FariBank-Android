@@ -94,8 +94,10 @@ public class FundsActivity extends AppCompatActivity {
             if (Main.getUsers().getCurrentUser().isHasRemainderFund()) {
                 Toast.makeText(this, "You already have a remainder fund", Toast.LENGTH_SHORT).show();
             } else {
-                Main.getUsers().getCurrentUser().addFund(new RemainderFund(Main.getUsers().getCurrentUser()));
+                RemainderFund newFund = new RemainderFund(Main.getUsers().getCurrentUser());
+                Main.getUsers().getCurrentUser().addFund(newFund);
                 Main.getUsers().getCurrentUser().setHasRemainderFund(true);
+                Main.getUsers().getCurrentUser().setRemainderFund(newFund);
                 fundsAdapter.notifyItemInserted(funds.size() - 1);
             }
             dialog.dismiss();
