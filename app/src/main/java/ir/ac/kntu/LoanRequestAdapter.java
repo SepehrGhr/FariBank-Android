@@ -37,7 +37,7 @@ public class LoanRequestAdapter extends RecyclerView.Adapter<LoanRequestAdapter.
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView amount, months, status;
+        private TextView amount, months, status;
 
         public ViewHolder(View view) {
             super(view);

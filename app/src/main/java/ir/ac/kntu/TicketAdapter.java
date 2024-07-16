@@ -38,7 +38,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketView
     }
 
     public class TicketViewHolder extends RecyclerView.ViewHolder {
-        TextView tvType, tvStatus;
+        private TextView tvType, tvStatus;
 
         public TicketViewHolder(@NonNull View itemView) {
             super(itemView);

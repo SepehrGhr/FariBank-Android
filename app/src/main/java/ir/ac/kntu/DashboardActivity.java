@@ -51,44 +51,34 @@ public class DashboardActivity extends AppCompatActivity {
         MaterialButton fundsButton = findViewById(R.id.fundsButton);
         MaterialButton loansButton = findViewById(R.id.loansButton);
 
-        User currentUser = Main.getUsers().getCurrentUser();
-        if (currentUser != null) {
-            userBalance.setText(String.format("$%s", currentUser.getAccount().getBalance()));
-            cardDetails.setText(currentUser.getAccount().getCreditCard().getCardNumber());
-            setupReceiptsRecyclerView((ArrayList<Receipt>) currentUser.getReceipts());
-        }
+        userBalance.setText(String.format("$%s", Main.getUsers().getCurrentUser().getAccount().getBalance()));
+        cardDetails.setText(Main.getUsers().getCurrentUser().getAccount().getCreditCard().getCardNumber());
+        setupReceiptsRecyclerView((ArrayList<Receipt>) Main.getUsers().getCurrentUser().getReceipts());
 
-        addMoneyButton.setOnClickListener(v -> showChargeAccountDialog(currentUser));
+        addMoneyButton.setOnClickListener(v -> showChargeAccountDialog(Main.getUsers().getCurrentUser()));
 
         contactsButton.setOnClickListener(v -> {
             Intent intent = new Intent(DashboardActivity.this, ContactsActivity.class);
             startActivity(intent);
         });
-
         supportButton.setOnClickListener(v -> {
             Intent intent = new Intent(DashboardActivity.this, SupportsActivity.class);
             startActivity(intent);
         });
-
         logoutButton.setOnClickListener(v -> {
             Main.getUsers().setCurrentUser(null);
             Intent intent = new Intent(DashboardActivity.this, LoginActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         });
-
         transferButton.setOnClickListener(v -> {
             Intent intent = new Intent(DashboardActivity.this, TransferActivity.class);
             startActivity(intent);
-            updateReceiptsAndBalance();
         });
-
         fundsButton.setOnClickListener(v -> {
             Intent intent = new Intent(DashboardActivity.this, FundsActivity.class);
             fundsActivityLauncher.launch(intent);
-            updateReceiptsAndBalance();
         });
-
         loansButton.setOnClickListener(v -> {
             Intent intent = new Intent(DashboardActivity.this, LoansActivity.class);
             startActivity(intent);
@@ -126,7 +116,7 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
         updateReceiptsAndBalance();
     }
