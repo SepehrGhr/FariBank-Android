@@ -1,59 +1,67 @@
-# FariBank Android
+# 🏦 FariBank Android
 
 A modern banking application for Android that provides a comprehensive set of financial services.
 
-![FariBank Logo](app/src/main/ic_launcher-playstore.png)
+<p align="center">
+  <img src="app/src/main/ic_launcher-playstore.png" alt="FariBank Logo" width="150" height="150">
+</p>
 
-## Features
+<p align="center">
+  <strong>Secure • Modern • User-friendly</strong>
+</p>
 
-- **User Authentication System**
+---
+
+## ✨ Features
+
+- **🔐 User Authentication System**
   - Login/Signup functionality
   - Secure password management
 
-- **Account Management**
+- **💰 Account Management**
   - View account balance and transaction history
   - Credit card management
   - Charge account with funds
 
-- **Money Transfer**
+- **💸 Money Transfer**
   - Transfer funds between accounts
   - Contact list management for frequent transfers
   - Transfer receipts and history
 
-- **Financial Services**
+- **📈 Financial Services**
   - Multiple fund types (Savings, Interest, Remainder)
   - Fund management
   - Interest calculation
 
-- **Loan System**
+- **💳 Loan System**
   - Loan requests and approval workflow
   - View active loans and payment history
   - Interest calculation on loans
 
-- **Customer Support**
+- **🎫 Customer Support**
   - Ticket system for support requests
   - Support case management
 
-## Technology Stack
+## 🛠️ Technology Stack
 
-- **Language**: Java
-- **Platform**: Android SDK
-- **UI Framework**: Material Design components & standard Android UI
-- **Minimum SDK**: 24 (Android 7.0 Nougat)
-- **Target SDK**: 34 (Android 14)
-- **Build System**: Gradle (Kotlin DSL)
-- **Architecture**: Activity-based UI with supporting adapters and data models
+- **☕ Language**: Java
+- **📱 Platform**: Android SDK
+- **🎨 UI Framework**: Material Design components & standard Android UI
+- **📊 Minimum SDK**: 24 (Android 7.0 Nougat)
+- **🎯 Target SDK**: 34 (Android 14)
+- **🔧 Build System**: Gradle (Kotlin DSL)
+- **🏗️ Architecture**: Activity-based UI with supporting adapters and data models
 
-## Project Structure
+## 📂 Project Structure
 
 The application follows a standard Android project structure:
 
-- **Activities**: User interface screens such as login, dashboard, and fund management
-- **Adapters**: RecyclerView adapters for displaying lists of data
-- **Models**: Data classes for users, accounts, loans, etc.
-- **Utils**: Utility classes for operations like input management and display
+- **🖥️ Activities**: User interface screens such as login, dashboard, and fund management
+- **🔄 Adapters**: RecyclerView adapters for displaying lists of data
+- **📱 Models**: Data classes for users, accounts, loans, etc.
+- **🔧 Utils**: Utility classes for operations like input management and display
 
-## Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
 
@@ -64,7 +72,7 @@ The application follows a standard Android project structure:
 ### Setup
 
 1. Clone the repository:
-   ```
+   ```bash
    git clone https://github.com/your-username/FariBank-Android.git
    ```
 
@@ -74,7 +82,7 @@ The application follows a standard Android project structure:
 
 4. Run the app on an emulator or physical device
 
-## Building and Running
+## ⚙️ Building and Running
 
 Build the application using Android Studio or with the following Gradle command:
 
@@ -87,3 +95,8 @@ Install and run on a connected device:
 ```bash
 ./gradlew installDebug
 ```
+
+<p align="center">
+  <a href="#-faribank-android">Back to top</a>
+</p>
+
